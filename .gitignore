@@ -1,0 +1,5 @@
+kafka/
+jq
+*.log
+.minimesos
+minimesos/
