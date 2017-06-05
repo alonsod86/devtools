@@ -29,20 +29,26 @@
         "KAFKA_ZOOKEEPER_URI":"zk-0002-zookeeperdev.service.paas.labs.stratio.com:22181,zk-0002-zookeeperdev.service.paas.labs.stratio.com:32181,zk-0002-zookeeperdev.service.paas.labs.stratio.com:42181",
         "VAULT_PORT":"8200",
         "KAFKA_VER_NAME":"kafka_2.11-0.10.0.1",
-        "DYPLON_PLUGIN_VERSION":"0.9.0-20170529.162242-6",
+        "DYPLON_PLUGIN_VERSION":"0.9.0-20170601.115843-7",
         "GOSEC_ZK_URI":"gosec1.node.paas.labs.stratio.com:2181,gosec2.node.paas.labs.stratio.com:2181,gosec3.node.paas.labs.stratio.com:2181",
         "GOSEC_KAFKA_URI":"gosec1.node.paas.labs.stratio.com:9092,gosec2.node.paas.labs.stratio.com:9092,gosec3.node.paas.labs.stratio.com:9092",
         "GOSEC_LDAP_HOST":"idp.integration.labs.stratio.com",
-        "GOSEC_LDAP_PASSWORD":"stratio_changeme"
+        "GOSEC_LDAP_PASSWORD":"stratio_changeme",
+        "KADMIN_PORT": "749",
+        "KDC_HOST": "idp.integration.labs.stratio.com",
+        "KRB5_DNS_DOMAIN": "demo.stratio.com",
+        "KADMIN_HOST": "idp.integration.labs.stratio.com",
+        "REALM": "DEMO.STRATIO.COM",
+        "KDC_PORT": "88"
 	},
 	"clients": {
 		"consumer": "kafka/binaries/bin/kafka-console-consumer.sh --bootstrap-server broker-0001-confluent-broker-sec.service.paas.labs.stratio.com:31005 --topic datio --new-consumer --consumer.config kafka/binaries/config/consumer.properties --from-beginning",
 		"producer": "kafka/binaries/bin/kafka-console-producer.sh --broker-list broker-0001-confluent-broker-sec.service.paas.labs.stratio.com:31005 --topic datio --producer.config kafka/binaries/config/producer.properties",
 		"config": {
 			"security_protocol":"SSL",
-			"ssl_truststore_location":"/stratio/b/minimesos/truststore.jks",
+			"ssl_truststore_location":"/stratio/b/minimesos/secrets/truststore.jks",
 			"ssl_truststore_password":"c0nflu3nt_k4fk4_s3c",
-			"ssl_keystore_location":"/stratio/b/minimesos/good.jks",
+			"ssl_keystore_location":"/stratio/b/minimesos/secrets/good.jks",
 			"ssl_keystore_password": "c0nflu3nt_k4fk4_s3c",
 			"group_id": "pruebas"
 		}

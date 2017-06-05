@@ -1,9 +1,9 @@
 #!/bin/bash
+
 CONFIG_FILE=$2
 JRE_BIN=jre-8u112-linux-x64.tar.gz
 KFK_BIN=kafka_2.11-0.10.0.1.tgz
 
-# Check for aguments
 if [ -z "$1" ]
   then
     echo "Specify host's network interface and config file"
@@ -16,7 +16,7 @@ INNET_ADDR=`jq -cMSr '.deploy.eth' $CONFIG_FILE`
 SOURCES=`jq -cMSr '.deploy.sources' $CONFIG_FILE`
 HOST_IP=`ifconfig $1 | grep "$INNET_ADDR" | cut -d: -f2 | awk '{ print $1}'`
 
-echo "Setting environment"
+echo "Preparing environment"
 count=0
 max=`jq -r ".scheduler[] | ." $CONFIG_FILE | wc -l`
 keys=`jq -r ".scheduler" $CONFIG_FILE | jq 'keys'`
@@ -34,6 +34,11 @@ export KAFKA_URI=http://$HOST_IP:$PYTHON_PORT/kafka/kafka_2.11-0.10.0.1.tgz
 export OVERRIDER_URI=http://$HOST_IP:$PYTHON_PORT/kafka/overrider.zip
 export SCHEDULER_URI=http://$HOST_IP:$PYTHON_PORT/kafka/scheduler.zip
 export EXECUTOR_URI=http://$HOST_IP:$PYTHON_PORT/kafka/executor.zip
+
+#echo "Cloning dcos-kafka-service"
+#cd kafka 
+#git clone git@github.com:Stratio/dcos-kafka-service.git
+#git checkout feature/
 
 echo "Gathering resources"
 cp $SOURCES/kafka-scheduler/build/distributions/scheduler.zip kafka/scheduler.zip

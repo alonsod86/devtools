@@ -1,7 +1,6 @@
 #!/bin/bash
 CONFIG_FILE=$2
 
-# Check for aguments
 if [ -z "$1" ]
   then
     echo "Specify host's network interface and zookeepers bind address"
@@ -29,7 +28,7 @@ function loopOverHosts() {
 	done
 }
 
-# restart minimesos cluster
+# Restart minimesos cluster
 echo "Tearing down minimesos cluster, please wait a few seconds..."
 minimesos destroy
 echo "Restarting minimesos cluster, please wait a few seconds..."
